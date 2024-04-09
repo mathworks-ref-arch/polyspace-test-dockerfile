@@ -1,7 +1,7 @@
-# Copyright 2023 The MathWorks, Inc.
+# Copyright 2023-2024 The MathWorks, Inc.
 
 # Use lower case to specify the release, for example: ARG MATLAB_RELEASE=r2023b
-ARG MATLAB_RELEASE=r2023b
+ARG MATLAB_RELEASE=r2024a
 
 FROM ubuntu:22.04
 
