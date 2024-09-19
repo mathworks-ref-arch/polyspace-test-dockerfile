@@ -31,7 +31,7 @@ cd polyspace-test-dockerfile
 cp Dockerfile.ubuntu22.04 Dockerfile
 
 # Build container with a name and tag of your choice.
-docker build . -t polyspace-test:r2024a
+docker build . -t polyspace-test:r2024b
 ```
 
 The `build` command looks for the `Dockerfile` in the current directory and builds an image with the name and tag specified by the `-t` option.
@@ -40,8 +40,8 @@ If you list the docker images and filter for `polyspace*` after the `docker buil
 
 ```bash
 $ docker images -f=reference=polyspace*
-REPOSITORY       TAG       IMAGE ID       CREATED         SIZE
-polyspace-test   r2024a    8f89679bf3e7   2 minutes ago   5.67GB
+REPOSITORY       TAG       IMAGE ID       CREATED              SIZE
+polyspace-test   r2024b    d11ca6c44b9c   About a minute ago   5.53GB
 ```
 
 ### Run Docker Container
@@ -65,7 +65,7 @@ cd demo
 # Build container and run demo script
 docker run --rm -v "$(pwd):/work" \
 -e MLM_LICENSE_FILE=27000@MyServerName.example.com \
-polyspace-test:r2024a /work/demo_script.sh
+polyspace-test:r2024b /work/demo_script.sh
 ```
 
 After running the test, you see an output similar to this in the terminal:
@@ -96,7 +96,7 @@ The [Dockerfile](https://github.com/mathworks-ref-arch/polyspace-test-dockerfile
 
 | Argument Name | Default value | Description |
 |---|---|---|
-| MATLAB_RELEASE | r2024a | The Polyspace Test release you want to install. Must be lower-case, for example: `r2024a`.|
+| MATLAB_RELEASE | r2024b | The Polyspace Test release you want to install. Must be lower-case, for example: `r2024b`.|
 | [LICENSE_SERVER](#specify-license-server-information-in-build-image) | *unset* | The port and hostname of the machine that is running the Network License Manager, using the `port@hostname` syntax. For example: `27000@MyServerName`. |
 
 To customize the docker image, use these arguments with the `docker build` command or edit the default values of these arguments directly in the [Dockerfile](https://github.com/mathworks-ref-arch/polyspace-test-dockerfile/blob/main/Dockerfile).
@@ -109,11 +109,11 @@ If you include the [license manager information](#obtain-license-manager-informa
 
 ```bash
 # Build container and specify LICENSE_SERVER variable
-docker build -t polyspace-test:r2024a --build-arg LICENSE_SERVER=27000@MyServerName.example.com .
+docker build -t polyspace-test:r2024b --build-arg LICENSE_SERVER=27000@MyServerName.example.com .
 
 # Run the container without specifying the MLM_LICENSE_FILE variable
 docker run --rm -v "$(pwd):/work" \
-polyspace-test:r2024a /work/demo_script.sh
+polyspace-test:r2024b /work/demo_script.sh
 ```
 
 > **Note**: If you specify the value of the LICENSE_SERVER variable in the Dockerfile, you can omit it when running the `docker build` command.
@@ -158,7 +158,7 @@ To use the `network.lic` file instead:
 
     ```bash
     # Example
-    docker build -t polyspace-test:r2024a .
+    docker build -t polyspace-test:r2024b .
     ```
 
 ## Remove Docker Image
@@ -166,7 +166,7 @@ To use the `network.lic` file instead:
 While docker cleans up containers on exit, the docker image persists in your file system until you explicitly delete it. To delete a docker image, run the `docker image rm` command and specify the name of the container. For instance:
 
 ```bash
-docker image rm polyspace-test:r2024a
+docker image rm polyspace-test:r2024b
 ```
 
 ---
