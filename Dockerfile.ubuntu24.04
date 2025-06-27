@@ -1,16 +1,16 @@
-# Copyright 2023-2024 The MathWorks, Inc.
+# Copyright 2023-2025 The MathWorks, Inc.
 
 # Use lower case to specify the release, for example: ARG MATLAB_RELEASE=r2023b
-ARG MATLAB_RELEASE=r2024b
+ARG MATLAB_RELEASE=r2025a
 
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 ARG MATLAB_RELEASE
 
 # Install Polyspace Test dependencies
 ENV DEBIAN_FRONTEND="noninteractive" TZ="Etc/UTC"
 RUN apt-get update && apt-get install --no-install-recommends -y \
-    libasound2 \
+    libasound2t64 \
     libc6 \
     libcairo-gobject2 \
     libcairo2 \
@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libdrm2 \
     libgbm1 \
     libgdk-pixbuf-2.0-0 \
+    libgl1 \
     libglib2.0-0 \
     libgstreamer-plugins-base1.0-0 \
     libgstreamer1.0-0 \
