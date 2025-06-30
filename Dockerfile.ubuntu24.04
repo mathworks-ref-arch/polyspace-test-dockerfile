@@ -27,6 +27,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libice6 \
     libnspr4 \
     libnss3 \
+    libopengl0 \
     libpam0g \
     libpango-1.0-0 \
     libpangocairo-1.0-0 \
